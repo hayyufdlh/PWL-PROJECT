@@ -1,0 +1,110 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #1b1b1b;
+}
+
+/* BACKGROUND */
+
+.hero{
+    background:
+    linear-gradient(rgba(0,0,0,0.6),
+    rgba(0,0,0,0.6)),
+    url('../img/bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.navbar-brand{
+    font-size: 28px;
+}
+
+.nav-link{
+    color: white !important;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.nav-link:hover{
+    color: #c7a17a !important;
+}
+
+/* HERO TEXT */
+
+.hero h1{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.hero p{
+    font-size: 18px;
+    margin-top: 20px;
+    color: #ddd;
+}
+
+/* BUTTON */
+
+.btn-coffee{
+    background-color: #6f4e37;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-coffee:hover{
+    background-color: #8b5e3c;
+    color: white;
+}
+
+/* PRODUCT */
+
+.product-section{
+    background-color: #f5f1ea;
+    color: black;
+    padding: 80px 0;
+}
+
+.card{
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card img{
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-body{
+    padding: 20px;
+}
+
+/* FOOTER */
+
+.footer{
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
