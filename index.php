@@ -1,3 +1,8 @@
+```php
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +18,6 @@
 
 <!-- NAVBAR -->
 
-<?php
-session_start();
-?>
-
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 
     <div class="container">
@@ -26,7 +27,9 @@ session_start();
         </a>
 
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
         <div class="collapse navbar-collapse" id="menu">
@@ -34,20 +37,58 @@ session_start();
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+
+                    <a class="nav-link active" href="index.php">
+                        Home
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="products.php">Products</a>
+
+                    <a class="nav-link" href="products.php">
+                        Products
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="about.php">About</a>
+
+                    <a class="nav-link" href="about.php">
+                        About
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+
+                    <a class="nav-link" href="contact.php">
+                        Contact
+                    </a>
+
                 </li>
+
+                <?php if(isset($_SESSION['role'])) { ?>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="logout.php">
+                            Logout
+                        </a>
+
+                    </li>
+
+                <?php } else { ?>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="login.php">
+                            Login
+                        </a>
+
+                    </li>
+
+                <?php } ?>
 
             </ul>
 
@@ -57,51 +98,41 @@ session_start();
 
 </nav>
 
-<?php if(isset($_SESSION['role'])) { ?>
-
-    <li class="nav-item">
-
-        <a class="nav-link" href="logout.php">
-            Logout
-        </a>
-
-    </li>
-
-<?php } else { ?>
-
-    <li class="nav-item">
-
-        <a class="nav-link" href="login.php">
-            Login
-        </a>
-
-    </li>
-
-<?php } ?>
-
 <!-- HERO -->
 
 <section class="hero">
 
     <div class="container">
 
-        <div class="row">
+        <div class="row align-items-center">
 
             <div class="col-md-7">
 
-                <h1>
-                    Premium Coffee Beans <br>
+                <span class="hero-tag">
+                    Indonesian Premium Coffee
+                </span>
+
+                <h1 class="hero-title mt-3">
+
+                    Premium Coffee Beans
                     From Indonesia
+
                 </h1>
 
-                <p>
-                    We provide high quality coffee beans, ground coffee,
-                    and selected Indonesian coffee products for local
-                    and international markets.
+                <p class="hero-text mt-4">
+
+                    We provide high quality coffee beans,
+                    roasted beans, and ground coffee products
+                    from selected Indonesian plantations for
+                    local and international markets.
+
                 </p>
 
-                <a href="products.php" class="btn btn-coffee mt-3">
+                <a href="products.php"
+                class="btn btn-coffee mt-3">
+
                     Explore Products
+
                 </a>
 
             </div>
@@ -132,20 +163,28 @@ session_start();
 
         <div class="row">
 
+            <!-- CARD 1 -->
+
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow">
+                <div class="card product-card shadow h-100">
 
-                    <img src="assets/img/gayo.jpg">
+                    <img src="assets/img/gayo.jpg"
+                    class="product-img">
 
                     <div class="card-body">
 
-                        <h4>
+                        <span class="badge bg-dark mb-2">
+                            Arabica
+                        </span>
+
+                        <h4 class="fw-bold">
                             Arabica Beans
                         </h4>
 
                         <p>
-                            Premium arabica coffee beans from Aceh Gayo.
+                            Premium arabica coffee beans
+                            from Aceh Gayo plantations.
                         </p>
 
                     </div>
@@ -154,20 +193,28 @@ session_start();
 
             </div>
 
+            <!-- CARD 2 -->
+
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow">
+                <div class="card product-card shadow h-100">
 
-                    <img src="assets/img/robusta.jpg">
+                    <img src="assets/img/robusta.jpg"
+                    class="product-img">
 
                     <div class="card-body">
 
-                        <h4>
+                        <span class="badge bg-dark mb-2">
+                            Robusta
+                        </span>
+
+                        <h4 class="fw-bold">
                             Robusta Coffee
                         </h4>
 
                         <p>
-                            Strong flavor robusta coffee from Indonesia.
+                            Strong flavor robusta coffee
+                            with bold Indonesian character.
                         </p>
 
                     </div>
@@ -176,20 +223,28 @@ session_start();
 
             </div>
 
+            <!-- CARD 3 -->
+
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow">
+                <div class="card product-card shadow h-100">
 
-                    <img src="assets/img/ground.jpg">
+                    <img src="assets/img/ground.jpg"
+                    class="product-img">
 
                     <div class="card-body">
 
-                        <h4>
+                        <span class="badge bg-dark mb-2">
+                            Ground Coffee
+                        </span>
+
+                        <h4 class="fw-bold">
                             Ground Coffee
                         </h4>
 
                         <p>
-                            Freshly ground coffee with rich aroma.
+                            Freshly ground coffee with
+                            rich aroma and smooth texture.
                         </p>
 
                     </div>
@@ -216,3 +271,4 @@ session_start();
 
 </body>
 </html>
+```

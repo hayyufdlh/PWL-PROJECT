@@ -1,9 +1,10 @@
+```php id="m7q4ns"
 <?php
 session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,61 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+
+        .contact-hero{
+
+            min-height: 55vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            background-image:
+            linear-gradient(
+            rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)
+            ),
+
+            url('assets/img/bg.jpeg');
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .contact-card{
+
+            border: none;
+
+            border-radius: 25px;
+        }
+
+        .contact-info{
+
+            background-color: #2b1d16;
+
+            color: white;
+
+            border-radius: 25px;
+        }
+
+        .maps{
+
+            border-radius: 25px;
+
+            overflow: hidden;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -25,8 +81,12 @@ session_start();
             Coffee Company
         </a>
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <button class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu">
+
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
         <div class="collapse navbar-collapse" id="menu">
@@ -34,35 +94,73 @@ session_start();
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+
+                    <a class="nav-link"
+                    href="index.php">
+
+                        Home
+
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="products.php">Products</a>
+
+                    <a class="nav-link"
+                    href="products.php">
+
+                        Products
+
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="about.php">About</a>
+
+                    <a class="nav-link"
+                    href="about.php">
+
+                        About
+
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="contact.php">Contact</a>
+
+                    <a class="nav-link active"
+                    href="contact.php">
+
+                        Contact
+
+                    </a>
+
                 </li>
 
                 <?php if(isset($_SESSION['role'])) { ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">
+
+                        <a class="nav-link"
+                        href="logout.php">
+
                             Logout
+
                         </a>
+
                     </li>
 
                 <?php } else { ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">
+
+                        <a class="nav-link"
+                        href="login.php">
+
                             Login
+
                         </a>
+
                     </li>
 
                 <?php } ?>
@@ -77,23 +175,26 @@ session_start();
 
 <!-- HERO -->
 
-<section class="hero">
+<section class="contact-hero">
 
-    <div class="container text-center">
+    <div class="container">
 
         <h1 class="fw-bold">
-            Contact Us
+            Hubungi Kami
         </h1>
 
         <p class="mt-3">
-            Get in touch with us for coffee inquiries and partnerships.
+
+            Hubungi kami untuk informasi produk,
+            kerja sama, atau pertanyaan lainnya.
+
         </p>
 
     </div>
 
 </section>
 
-<!-- CONTACT SECTION -->
+<!-- CONTACT -->
 
 <section class="product-section">
 
@@ -105,17 +206,22 @@ session_start();
 
             <div class="col-md-7 mb-4">
 
-                <div class="card shadow p-4">
+                <div class="card contact-card shadow p-4">
 
                     <h3 class="fw-bold mb-4">
-                        Send Message
+
+                        Kirim Pesan
+
                     </h3>
 
-                    <form action="proses/kirim_pesan.php" method="POST">
+                    <form action="proses/kirim_pesan.php"
+                    method="POST">
 
                         <div class="mb-3">
 
-                            <label>Name</label>
+                            <label>
+                                Nama
+                            </label>
 
                             <input
                             type="text"
@@ -127,7 +233,9 @@ session_start();
 
                         <div class="mb-3">
 
-                            <label>Email</label>
+                            <label>
+                                Email
+                            </label>
 
                             <input
                             type="email"
@@ -137,9 +245,11 @@ session_start();
 
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
 
-                            <label>Message</label>
+                            <label>
+                                Pesan
+                            </label>
 
                             <textarea
                             name="pesan"
@@ -150,7 +260,9 @@ session_start();
                         </div>
 
                         <button class="btn btn-coffee">
-                            Send Message
+
+                            Kirim Pesan
+
                         </button>
 
                     </form>
@@ -163,14 +275,16 @@ session_start();
 
             <div class="col-md-5">
 
-                <div class="card shadow p-4 mb-4">
+                <div class="contact-info shadow p-4 mb-4">
 
-                    <h4 class="fw-bold mb-3">
-                        Contact Information
+                    <h4 class="fw-bold mb-4">
+
+                        Informasi Kontak
+
                     </h4>
 
                     <p>
-                        📍 Jakarta, Indonesia
+                        📍 Soreang, Kabupaten Bandung
                     </p>
 
                     <p>
@@ -181,17 +295,24 @@ session_start();
                         ✉️ coffeecompany@gmail.com
                     </p>
 
+                    <p>
+                        ⏰ 08.00 - 20.00 WIB
+                    </p>
+
                 </div>
 
-                <div class="card shadow overflow-hidden">
+                <!-- MAP -->
+
+                <div class="maps shadow">
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.74303601944!2d106.718927!3d-6.229728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e5f0d0f1bb%3A0xb1f8d28b383e1287!2sJakarta!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid"
-                        width="100%"
-                        height="300"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy">
+                    src="https://www.google.com/maps?q=Soreang%20Bandung&output=embed"
+                    width="100%"
+                    height="320"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+
                     </iframe>
 
                 </div>
@@ -216,3 +337,4 @@ session_start();
 
 </body>
 </html>
+```

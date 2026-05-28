@@ -1,5 +1,10 @@
+```php id="uwt6pz"
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +13,102 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+
+        .about-hero{
+
+            min-height: 60vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            background-image:
+            linear-gradient(
+            rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)
+            ),
+
+            url('assets/img/bg.jpeg');
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .about-img{
+
+            border-radius: 25px;
+
+            height: 450px;
+
+            object-fit: cover;
+        }
+
+        .about-card{
+
+            border: none;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+        .about-card:hover{
+
+            transform: translateY(-5px);
+        }
+
+        .vision-section{
+
+            background-color: #2b1d16;
+        }
+
+        .vision-box{
+
+            background-color: rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            height: 100%;
+        }
+
+        .why-card{
+
+            border: none;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+        .why-card:hover{
+
+            transform: translateY(-8px);
+        }
+
+        .number-box{
+
+            background-color: #6f4e37;
+
+            color: white;
+
+            border-radius: 20px;
+
+            padding: 35px;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -21,8 +122,12 @@
             Coffee Company
         </a>
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <button class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu">
+
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
         <div class="collapse navbar-collapse" id="menu">
@@ -30,20 +135,76 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+
+                    <a class="nav-link"
+                    href="index.php">
+
+                        Home
+
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="products.php">Products</a>
+
+                    <a class="nav-link"
+                    href="products.php">
+
+                        Products
+
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="about.php">About</a>
+
+                    <a class="nav-link active"
+                    href="about.php">
+
+                        About
+
+                    </a>
+
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+
+                    <a class="nav-link"
+                    href="contact.php">
+
+                        Contact
+
+                    </a>
+
                 </li>
+
+                <?php if(isset($_SESSION['role'])) { ?>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                        href="logout.php">
+
+                            Logout
+
+                        </a>
+
+                    </li>
+
+                <?php } else { ?>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                        href="login.php">
+
+                            Login
+
+                        </a>
+
+                    </li>
+
+                <?php } ?>
 
             </ul>
 
@@ -55,23 +216,26 @@
 
 <!-- HERO -->
 
-<section class="hero">
+<section class="about-hero">
 
-    <div class="container text-center">
+    <div class="container">
 
         <h1 class="fw-bold">
-            About Our Company
+            Tentang Kami
         </h1>
 
         <p class="mt-3">
-            Bringing authentic Indonesian coffee to the world.
+
+            Menyediakan produk kopi dengan kualitas
+            yang terjaga dan cita rasa yang khas.
+
         </p>
 
     </div>
 
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 
 <section class="product-section">
 
@@ -79,29 +243,110 @@
 
         <div class="row align-items-center">
 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-4">
 
-                <img src="assets/img/bg.jpg" class="img-fluid rounded shadow">
+                <img
+                src="assets/img/bg.jpeg"
+                class="img-fluid shadow about-img">
 
             </div>
 
             <div class="col-md-6">
 
-                <h2 class="fw-bold mb-4">
-                    Who We Are
+                <span class="hero-tag">
+                    Coffee Supplier
+                </span>
+
+                <h2 class="fw-bold mt-4 mb-4">
+
+                    Tentang Coffee Company
+
                 </h2>
 
                 <p>
-                    Coffee Company is an Indonesian coffee supplier that provides
-                    premium coffee beans, roasted beans, and ground coffee products
-                    from selected coffee plantations across Indonesia.
+
+                    Coffee Company menyediakan produk kopi
+                    berupa biji kopi dan bubuk kopi dengan
+                    kualitas yang terjaga dan aroma khas.
+
                 </p>
 
                 <p>
-                    We are committed to delivering authentic taste, high quality
-                    products, and sustainable partnerships for coffee lovers,
-                    cafes, and businesses.
+
+                    Kami fokus menghadirkan produk kopi yang
+                    cocok dinikmati sehari-hari dengan proses
+                    pengolahan yang baik dan bahan pilihan.
+
                 </p>
+
+                <p>
+
+                    Produk kami dapat digunakan untuk kebutuhan
+                    pribadi, cafe, maupun usaha kopi lainnya.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATISTIC -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4">
+
+                <div class="number-box shadow">
+
+                    <h1 class="fw-bold">
+                        100+
+                    </h1>
+
+                    <p class="mb-0">
+                        Pelanggan
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-4">
+
+                <div class="number-box shadow">
+
+                    <h1 class="fw-bold">
+                        2
+                    </h1>
+
+                    <p class="mb-0">
+                        Produk Utama
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-4">
+
+                <div class="number-box shadow">
+
+                    <h1 class="fw-bold">
+                        100%
+                    </h1>
+
+                    <p class="mb-0">
+                        Biji Kopi Pilihan
+                    </p>
+
+                </div>
 
             </div>
 
@@ -113,37 +358,65 @@
 
 <!-- VISI MISI -->
 
-<section class="py-5 bg-dark text-white">
+<section class="vision-section py-5 text-white">
 
     <div class="container">
 
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-4">
 
-                <h3 class="fw-bold mb-3">
-                    Our Vision
-                </h3>
+                <div class="vision-box">
 
-                <p>
-                    To become a trusted Indonesian coffee supplier in local
-                    and international markets.
-                </p>
+                    <h3 class="fw-bold mb-4">
+
+                        Visi
+
+                    </h3>
+
+                    <p>
+
+                        Menjadi penyedia produk kopi yang
+                        dipercaya dengan kualitas yang baik
+                        dan pelayanan yang maksimal.
+
+                    </p>
+
+                </div>
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-4">
 
-                <h3 class="fw-bold mb-3">
-                    Our Mission
-                </h3>
+                <div class="vision-box">
 
-                <ul>
-                    <li>Provide premium quality coffee products.</li>
-                    <li>Support local coffee farmers.</li>
-                    <li>Deliver authentic Indonesian coffee taste.</li>
-                    <li>Build sustainable business relationships.</li>
-                </ul>
+                    <h3 class="fw-bold mb-4">
+
+                        Misi
+
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Menyediakan produk kopi berkualitas.
+                        </li>
+
+                        <li>
+                            Menjaga kualitas produk dan pelayanan.
+                        </li>
+
+                        <li>
+                            Menghadirkan aroma dan rasa kopi terbaik.
+                        </li>
+
+                        <li>
+                            Memberikan pengalaman menikmati kopi yang nyaman.
+                        </li>
+
+                    </ul>
+
+                </div>
 
             </div>
 
@@ -153,7 +426,7 @@
 
 </section>
 
-<!-- WHY CHOOSE US -->
+<!-- WHY CHOOSE -->
 
 <section class="product-section">
 
@@ -162,23 +435,36 @@
         <div class="text-center mb-5">
 
             <h2 class="fw-bold">
-                Why Choose Us
+
+                Kenapa Memilih Kami
+
             </h2>
+
+            <p>
+
+                Produk kopi dengan kualitas dan aroma yang terjaga.
+
+            </p>
 
         </div>
 
-        <div class="row text-center">
+        <div class="row">
 
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow p-4 h-100">
+                <div class="card why-card shadow p-4 h-100">
 
-                    <h4 class="fw-bold">
-                        Premium Quality
+                    <h4 class="fw-bold mb-3">
+
+                        Bahan Pilihan
+
                     </h4>
 
                     <p>
-                        Carefully selected coffee beans from Indonesia.
+
+                        Menggunakan biji kopi pilihan dengan
+                        kualitas yang baik.
+
                     </p>
 
                 </div>
@@ -187,14 +473,19 @@
 
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow p-4 h-100">
+                <div class="card why-card shadow p-4 h-100">
 
-                    <h4 class="fw-bold">
-                        Trusted Supplier
+                    <h4 class="fw-bold mb-3">
+
+                        Aroma Khas
+
                     </h4>
 
                     <p>
-                        Supplying coffee products for cafes and businesses.
+
+                        Memiliki aroma kopi yang khas
+                        dan nyaman dinikmati.
+
                     </p>
 
                 </div>
@@ -203,14 +494,19 @@
 
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow p-4 h-100">
+                <div class="card why-card shadow p-4 h-100">
 
-                    <h4 class="fw-bold">
-                        Authentic Taste
+                    <h4 class="fw-bold mb-3">
+
+                        Kualitas Terjaga
+
                     </h4>
 
                     <p>
-                        Rich aroma and authentic Indonesian coffee flavor.
+
+                        Produk dikemas dengan baik agar
+                        kualitas tetap terjaga.
+
                     </p>
 
                 </div>
@@ -235,3 +531,4 @@
 
 </body>
 </html>
+```
