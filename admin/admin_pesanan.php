@@ -1,98 +1,93 @@
 <?php
 
-include '../config/koneksi.php';
-
 /** @var mysqli $conn */
 
-$data = mysqli_query($conn,
-"SELECT * FROM pesanan ORDER BY id DESC");
+session_start();
+
+if(!isset($_SESSION['role'])){
+    header("location:../login.php");
+    exit;
+}
+
+if($_SESSION['role'] != 'admin'){
+    header("location:../index.php");
+    exit;
+}
+
+include '../config/koneksi.php';
+
+$data = mysqli_query(
+    $conn,
+    "SELECT * FROM pesanan ORDER BY id DESC"
+);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 
-    <meta charset="UTF-8">
+<title>Data Pesanan</title>
 
-    <meta name="viewport"
-    content="width=device-width,
-    initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Admin Pesanan</title>
+<style>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+body{
+    background:#f5f1ea;
+}
 
-    <style>
+.container{
+    margin-top:40px;
+}
 
-        body{
+img{
+    border-radius:10px;
+}
 
-            background-color: #f5f1ea;
-        }
-
-        .container{
-
-            margin-top: 50px;
-        }
-
-        .table{
-
-            background-color: white;
-        }
-
-        .btn-status{
-
-            background-color: #6f4e37;
-
-            color: white;
-
-            border: none;
-        }
-
-    </style>
+</style>
 
 </head>
 <body>
 
 <div class="container">
 
-    <h1 class="fw-bold mb-4">
+    <div class="d-flex justify-content-between mb-4">
 
-        Data Pesanan
+        <h2 class="fw-bold">
+            Data Pesanan
+        </h2>
 
-    </h1>
+        <a href="dashboard.php" class="btn btn-dark">
+            Dashboard
+        </a>
 
-    <table class="table table-bordered shadow">
+    </div>
+
+    <table class="table table-bordered bg-white">
 
         <tr class="table-dark">
 
-            <th>No</th>
+            <th>ID</th>
             <th>Nama</th>
             <th>Produk</th>
-            <th>Harga</th>
+            <th>Total</th>
             <th>Pembayaran</th>
+            <th>Bukti</th>
             <th>Status</th>
             <th>Aksi</th>
 
         </tr>
 
-        <?php
-        $no = 1;
-
-        while($d = mysqli_fetch_array($data)){
-        ?>
+        <?php while($d = mysqli_fetch_array($data)){ ?>
 
         <tr>
 
-            <td><?php echo $no++; ?></td>
+            <td><?php echo $d['id']; ?></td>
 
-            <td>
-                <?php echo $d['nama']; ?>
-            </td>
+            <td><?php echo $d['nama']; ?></td>
 
-            <td>
-                <?php echo $d['produk']; ?>
-            </td>
+            <td><?php echo $d['produk']; ?></td>
 
             <td>
                 Rp <?php echo number_format($d['harga']); ?>
@@ -100,6 +95,27 @@ $data = mysqli_query($conn,
 
             <td>
                 <?php echo $d['payment']; ?>
+            </td>
+
+            <td>
+
+                <?php if($d['bukti_transfer'] != ''){ ?>
+
+                    <a
+                    href="../bukti/<?php echo $d['bukti_transfer']; ?>"
+                    target="_blank"
+                    class="btn btn-success btn-sm">
+
+                        Lihat
+
+                    </a>
+
+                <?php } else { ?>
+
+                    Belum Upload
+
+                <?php } ?>
+
             </td>
 
             <td>
@@ -121,10 +137,14 @@ $data = mysqli_query($conn,
 
                     <select
                     name="status"
-                    class="form-select mb-2">
+                    class="form-control mb-2">
 
                         <option>
                             Menunggu Pembayaran
+                        </option>
+
+                        <option>
+                            Menunggu Verifikasi
                         </option>
 
                         <option>
@@ -141,7 +161,7 @@ $data = mysqli_query($conn,
 
                     </select>
 
-                    <button class="btn btn-status">
+                    <button class="btn btn-primary btn-sm">
 
                         Update
 

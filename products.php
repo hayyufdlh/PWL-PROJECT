@@ -372,6 +372,11 @@ $review = mysqli_query($conn,
 
                         </p>
 
+                        <p class="text-success">
+                            Stok :
+                            <?php echo $d['stok']; ?>
+                        </p>
+
                         <h4 class="fw-bold mt-4 price">
 
                             Rp <?php echo number_format($d['harga']); ?>
@@ -478,6 +483,7 @@ $review = mysqli_query($conn,
                             name="harga"
                             value="<?php echo $d['harga']; ?>">
 
+
                             <div class="mb-3">
 
                                 <label>
@@ -517,6 +523,52 @@ $review = mysqli_query($conn,
                                 class="form-control"
                                 rows="4"
                                 required></textarea>
+
+                            </div>
+                            <div class="mb-3">
+
+                            <label>
+                            Berat
+                            </label>
+
+                            <select
+                            name="berat"
+                            class="form-control"
+                            required>
+
+                            <option value="100">
+                            100 Gram
+                            </option>
+
+                            <option value="200">
+                            200 Gram
+                            </option>
+
+                            <option value="500">
+                            500 Gram
+                            </option>
+
+                            <option value="1000">
+                            1000 Gram
+                            </option>
+
+                            </select>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                            <label>
+                            Jumlah
+                            </label>
+
+                            <input
+                            type="number"
+                            name="qty"
+                            class="form-control"
+                            value="1"
+                            min="1"
+                            required>
 
                             </div>
 

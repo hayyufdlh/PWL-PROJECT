@@ -177,9 +177,22 @@ $data = mysqli_query($conn, "SELECT * FROM produk");
 
             <td>
 
-                <a href="../proses/hapus.php?id=<?php echo $d['id']; ?>" class="btn btn-danger btn-sm">
-                    Delete
-                </a>
+            <a
+            href="edit_produk.php?id=<?php echo $d['id']; ?>"
+            class="btn btn-warning btn-sm">
+
+                Edit
+
+            </a>
+
+            <a
+            href="../proses/hapus.php?id=<?php echo $d['id']; ?>"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Hapus produk ini?')">
+
+                Delete
+
+            </a>
 
             </td>
 

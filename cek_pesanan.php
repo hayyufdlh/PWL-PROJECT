@@ -8,110 +8,114 @@ if(isset($_POST['email'])){
 
     $email = $_POST['email'];
 
-    $data = mysqli_query($conn,
+    $data = mysqli_query(
+
+    $conn,
 
     "SELECT * FROM pesanan
     WHERE email='$email'
-    ORDER BY id DESC");
+    ORDER BY id DESC"
 
+    );
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 
-    <meta charset="UTF-8">
+<title>Cek Pesanan</title>
 
-    <meta name="viewport"
-    content="width=device-width,
-    initial-scale=1.0">
-
-    <title>Cek Pesanan</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-
-        body{
-
-            background-color: #f5f1ea;
-        }
-
-        .container{
-
-            margin-top: 60px;
-        }
-
-    </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body style="background:#f5f1ea;">
 
-<div class="container">
+<div class="container mt-5">
 
-    <h1 class="fw-bold mb-4">
+    <div class="card shadow border-0 p-4">
 
-        Cek Status Pesanan
+        <h2 class="fw-bold mb-4">
 
-    </h1>
+            Cek Status Pesanan
 
-    <form method="POST"
-    class="mb-5">
+        </h2>
 
-        <input
-        type="email"
-        name="email"
-        class="form-control mb-3"
-        placeholder="Masukkan email"
-        required>
+        <form method="POST">
 
-        <button class="btn btn-dark">
+            <div class="mb-3">
 
-            Cek Pesanan
+                <label>Email</label>
 
-        </button>
+                <input
+                type="email"
+                name="email"
+                class="form-control"
+                required>
 
-    </form>
+            </div>
 
-    <?php
-    if($data){
-    while($d = mysqli_fetch_array($data)){
-    ?>
+            <button class="btn btn-dark">
 
-    <div class="card shadow p-4 mb-4">
+                Cari Pesanan
 
-        <h4 class="fw-bold">
+            </button>
 
-            <?php echo $d['produk']; ?>
-
-        </h4>
-
-        <p>
-
-            Total:
-            Rp <?php echo number_format($d['harga']); ?>
-
-        </p>
-
-        <p>
-
-            Pembayaran:
-            <?php echo $d['payment']; ?>
-
-        </p>
-
-        <p>
-
-            Status:
-            <b><?php echo $d['status_pesanan']; ?></b>
-
-        </p>
+        </form>
 
     </div>
 
-    <?php }} ?>
+    <?php if($data){ ?>
+
+    <div class="card shadow border-0 mt-4 p-4">
+
+        <table class="table">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Produk</th>
+                <th>Total</th>
+                <th>Status</th>
+
+            </tr>
+
+            <?php while($d=mysqli_fetch_array($data)){ ?>
+
+            <tr>
+
+                <td>
+                    <?php echo $d['id']; ?>
+                </td>
+
+                <td>
+                    <?php echo $d['produk']; ?>
+                </td>
+
+                <td>
+                    Rp <?php echo number_format($d['harga']); ?>
+                </td>
+
+                <td>
+
+                    <span class="badge bg-success">
+
+                        <?php echo $d['status_pesanan']; ?>
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            <?php } ?>
+
+        </table>
+
+    </div>
+
+    <?php } ?>
 
 </div>
 
