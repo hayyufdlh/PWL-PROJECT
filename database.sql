@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table coffee_db.messages: ~0 rows (approximately)
+-- Dumping data for table coffee_db.messages: ~2 rows (approximately)
 INSERT INTO `messages` (`id`, `nama`, `email`, `pesan`, `tanggal`) VALUES
 	(1, 'Hayyu', 'hayyu@gmail.com', 'I want to order coffee beans.', '2026-05-28 13:31:07'),
 	(2, 'Hayyu Fdlh', 'hayyu@gmail.com', 'semangat', '2026-05-28 13:35:22'),
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table coffee_db.orders: ~0 rows (approximately)
+-- Dumping data for table coffee_db.orders: ~6 rows (approximately)
 INSERT INTO `orders` (`id`, `nama`, `email`, `produk`, `harga`, `alamat`, `created_at`, `pembayaran`, `status_pesanan`) VALUES
 	(1, 'Hayyu Fdlh', 'nurhayyuf@gmail.com', 'Arabica Gayo', 85000, 'Jl.Sukaluyu I, Gg.II, No.32', '2026-05-28 15:14:51', NULL, NULL),
 	(2, 'Hayyu Fdlh', 'nurhayyuf@gmail.com', 'Arabica Gayo', 85000, 'Jl.Sukaluyu I, Gg.II, No.32', '2026-05-28 15:14:52', NULL, NULL),
@@ -70,12 +70,17 @@ CREATE TABLE IF NOT EXISTS `pesanan` (
   `status_pesanan` varchar(50) COLLATE utf8mb4_general_ci DEFAULT 'Menunggu Pembayaran',
   `bukti_transfer` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `berat` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `qty` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table coffee_db.pesanan: ~0 rows (approximately)
-INSERT INTO `pesanan` (`id`, `nama`, `email`, `alamat`, `produk`, `harga`, `payment`, `status_pesanan`, `bukti_transfer`, `tanggal`) VALUES
-	(1, 'Hayyu Fdlh', 'nurhayyuf@gmail.com', 'Bandung', 'Arabica Gayo', 85000, 'Transfer Bank', 'Dikirim', NULL, '2026-05-28 15:36:28');
+-- Dumping data for table coffee_db.pesanan: ~3 rows (approximately)
+INSERT INTO `pesanan` (`id`, `nama`, `email`, `alamat`, `produk`, `harga`, `payment`, `status_pesanan`, `bukti_transfer`, `tanggal`, `berat`, `qty`) VALUES
+	(1, 'Arda', 'nurhayyuf@gmail.com', 'Bandung', 'Arabica Gayo', 85000, 'Transfer Bank', 'Selesai', NULL, '2026-05-28 15:36:28', NULL, NULL),
+	(2, 'Ubad', 'kohibuteng@gmail.com', 'Soreang', 'Arabica Gayo', 85000, 'E-Wallet', 'Diproses', NULL, '2026-05-28 23:54:05', NULL, NULL),
+	(7, 'Hayyu Fdlh', 'nurhayyuf@gmail.com', 'inggris', 'Bubuk Kopi Arabica', 75000, 'Transfer Bank', 'Menunggu Pembayaran', NULL, '2026-06-04 15:59:09', NULL, NULL),
+	(8, 'Fadillah', 'hayyufdlh@gmail.com', 'hujung', 'Robusta Temanggung', 65000, 'Transfer Bank', 'Menunggu Verifikasi', '1780589406_gayo.jpg', '2026-06-04 16:09:37', NULL, NULL);
 
 -- Dumping structure for table coffee_db.produk
 CREATE TABLE IF NOT EXISTS `produk` (
@@ -85,13 +90,19 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `harga` int DEFAULT NULL,
   `gambar` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `kategori` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `harga_100` int DEFAULT NULL,
+  `harga_200` int DEFAULT NULL,
+  `harga_500` int DEFAULT NULL,
+  `harga_1000` int DEFAULT NULL,
+  `stok` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table coffee_db.produk: ~3 rows (approximately)
-INSERT INTO `produk` (`id`, `nama_produk`, `deskripsi`, `harga`, `gambar`, `kategori`) VALUES
-	(1, 'Arabica Gayo', 'Premium arabica coffee beans from Aceh Gayo.', 85000, 'gayo.jpg', 'Coffee Beans'),
-	(2, 'Robusta Temanggung', 'Strong and bold robusta coffee from Central Java.', 65000, 'robusta.jpg', 'Coffee Beans');
+INSERT INTO `produk` (`id`, `nama_produk`, `deskripsi`, `harga`, `gambar`, `kategori`, `harga_100`, `harga_200`, `harga_500`, `harga_1000`, `stok`) VALUES
+	(1, 'Arabica Gayo', 'Premium arabica coffee beans from Aceh Gayo.', 85000, 'gayo.jpg', 'Coffee Beans', 30000, NULL, NULL, NULL, 0),
+	(2, 'Robusta Temanggung', 'Strong and bold robusta coffee from Central Java.', 65000, 'robusta.jpg', 'Coffee Beans', 25000, NULL, NULL, NULL, 0),
+	(4, 'Bubuk Kopi Arabica', 'Bubuk ', 75000, 'ground.jpg', 'coffee powder', 20000, NULL, NULL, NULL, 0);
 
 -- Dumping structure for table coffee_db.reviews
 CREATE TABLE IF NOT EXISTS `reviews` (
@@ -101,11 +112,12 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `komentar` text COLLATE utf8mb4_general_ci,
   `tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table coffee_db.reviews: ~0 rows (approximately)
+-- Dumping data for table coffee_db.reviews: ~2 rows (approximately)
 INSERT INTO `reviews` (`id`, `nama`, `rating`, `komentar`, `tanggal`) VALUES
-	(2, 'Hayyu Fdlh', 5, 'kopinya harum, harga sangat murah untuk kualitas yg bagus seperti ini', '2026-05-28 14:15:01');
+	(2, 'Hayyu Fdlh', 5, 'kopinya harum, harga sangat murah untuk kualitas yg bagus seperti ini', '2026-05-28 14:15:01'),
+	(3, 'Hayyu Fdlh', 5, 'bagus\r\n', '2026-05-29 01:40:43');
 
 -- Dumping structure for table coffee_db.users
 CREATE TABLE IF NOT EXISTS `users` (
