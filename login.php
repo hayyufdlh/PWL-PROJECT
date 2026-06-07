@@ -57,79 +57,22 @@ if(isset($_POST['login'])){
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-
-        body{
-            margin: 0;
-            font-family: Arial;
-
-            background:
-            linear-gradient(rgba(0,0,0,0.7),
-            rgba(0,0,0,0.7)),
-            url('assets/img/bg.jpg');
-
-            background-size: cover;
-            background-position: center;
-
-            height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-box{
-
-            width: 400px;
-
-            background: rgba(255,255,255,0.1);
-
-            backdrop-filter: blur(10px);
-
-            padding: 40px;
-
-            border-radius: 20px;
-
-            color: white;
-        }
-
-        .form-control{
-
-            height: 50px;
-
-            border-radius: 10px;
-        }
-
-        .btn-login{
-
-            width: 100%;
-
-            height: 50px;
-
-            border: none;
-
-            border-radius: 10px;
-
-            background-color: #6f4e37;
-
-            color: white;
-        }
-
-        .btn-login:hover{
-
-            background-color: #8b5e3c;
-        }
-
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
-<body>
+<body class="login-page">
 
-<div class="login-box">
+<div class="login-wrapper">
 
-    <h2 class="text-center fw-bold mb-4">
-        Login System
-    </h2>
+    <div class="login-box">
+
+        ...
+
+    </div>
+
+</div>
+
+</body>
 
     <?php if(isset($error)) { ?>
 
@@ -168,10 +111,13 @@ if(isset($_POST['login'])){
         <button type="submit"
         name="login"
         class="btn-login">
-
             Login
-
         </button>
+
+        <a href="index.php" class="btn-home">
+            ← Back to Home
+        </a>
+        
 
     </form>
 

@@ -33,23 +33,9 @@ if(isset($_GET['email'])){
     <title>Riwayat Pesanan</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-
-        body{
-
-            background-color: #f5f1ea;
-        }
-
-        .box{
-
-            background-color: white;
-
-            border-radius: 20px;
-        }
-
-    </style>
-
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
 </head>
 <body>
 

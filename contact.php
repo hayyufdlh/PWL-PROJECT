@@ -14,60 +14,6 @@ session_start();
 
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <style>
-
-        .contact-hero{
-
-            min-height: 55vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            color: white;
-
-            background-image:
-            linear-gradient(
-            rgba(0,0,0,0.6),
-            rgba(0,0,0,0.6)
-            ),
-
-            url('assets/img/bg.jpeg');
-
-            background-size: cover;
-
-            background-position: center;
-        }
-
-        .contact-card{
-
-            border: none;
-
-            border-radius: 25px;
-        }
-
-        .contact-info{
-
-            background-color: #2b1d16;
-
-            color: white;
-
-            border-radius: 25px;
-        }
-
-        .maps{
-
-            border-radius: 25px;
-
-            overflow: hidden;
-        }
-
-    </style>
-
 </head>
 <body>
 
@@ -288,7 +234,7 @@ session_start();
                     </p>
 
                     <p>
-                        📞 +62 812 3456 7890
+                        📞 +62 823 3304 4461
                     </p>
 
                     <p>
@@ -322,6 +268,26 @@ session_start();
         </div>
 
     </div>
+
+</section>
+
+<section class="cta">
+
+<div class="container">
+
+<h2>
+Ready To Enjoy Premium Coffee?
+</h2>
+
+<p class="mt-3 mb-4">
+Nikmati kopi pilihan terbaik dengan kualitas premium.
+</p>
+
+<a href="products.php" class="btn btn-coffee">
+Shop Now
+</a>
+
+</div>
 
 </section>
 

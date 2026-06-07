@@ -7,11 +7,16 @@ include 'config/koneksi.php';
 
 if(isset($_GET['search'])){
 
-    $search = $_GET['search'];
+    $search = mysqli_real_escape_string(
+    $conn,
+    $_GET['search']
+    );
 
-    $data = mysqli_query($conn,
+    $data = mysqli_query(
+    $conn,
     "SELECT * FROM produk
-    WHERE nama_produk LIKE '%$search%'");
+    WHERE nama_produk LIKE '%$search%'"
+    );
 
 } else {
 
@@ -38,170 +43,6 @@ $review = mysqli_query($conn,
 
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <style>
-
-        .hero-products{
-
-            min-height: 60vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            color: white;
-
-            background-image:
-            linear-gradient(
-            rgba(0,0,0,0.6),
-            rgba(0,0,0,0.6)
-            ),
-
-            url('assets/img/bg.jpeg');
-
-            background-size: cover;
-
-            background-position: center;
-        }
-
-        .search-box{
-
-            background-color: white;
-
-            padding: 20px;
-
-            border-radius: 20px;
-
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .search-input{
-
-            height: 55px;
-
-            border-radius: 12px;
-        }
-
-        .product-card{
-
-            border: none;
-
-            border-radius: 25px;
-
-            overflow: hidden;
-
-            transition: 0.4s;
-
-            background-color: white;
-        }
-
-        .product-card:hover{
-
-            transform: translateY(-10px);
-
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .product-img{
-
-            height: 280px;
-
-            object-fit: cover;
-        }
-
-        .price{
-
-            color: #6f4e37;
-        }
-
-        .modal-content{
-
-            border-radius: 25px;
-
-            overflow: hidden;
-
-            border: none;
-        }
-
-        .modal-img{
-
-            height: 420px;
-
-            object-fit: cover;
-        }
-
-        .info-section{
-
-            background-color: #f8f5f0;
-        }
-
-        .info-box{
-
-            background-color: white;
-
-            padding: 35px;
-
-            border-radius: 20px;
-
-            transition: 0.3s;
-
-            height: 100%;
-        }
-
-        .info-box:hover{
-
-            transform: translateY(-5px);
-        }
-
-        .review-section{
-
-            background-color: #2b1d16;
-        }
-
-        .review-card{
-
-            border: none;
-
-            border-radius: 20px;
-
-            transition: 0.3s;
-        }
-
-        .review-card:hover{
-
-            transform: translateY(-5px);
-        }
-
-        .star{
-
-            font-size: 20px;
-        }
-
-        .payment-box{
-
-            background-color: #f8f5f0;
-
-            border-radius: 15px;
-
-            padding: 15px;
-
-            margin-top: 15px;
-        }
-
-        .va-number{
-
-            font-size: 22px;
-
-            font-weight: bold;
-
-            color: #6f4e37;
-        }
-
-    </style>
-
 </head>
 <body>
 
@@ -210,16 +51,10 @@ $review = mysqli_query($conn,
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 
     <div class="container">
-
-        <a class="navbar-brand fw-bold" href="#">
-            Coffee Company
+        <a class="navbar-brand fw-bold" href="index.php">
+    ☕ Coffee Company
         </a>
 
-        <li class="nav-item">
-            <a class="nav-link" href="cek_pesanan.php">
-                Tracking
-            </a>
-        </li>
 
         <button class="navbar-toggler"
         data-bs-toggle="collapse"
@@ -232,6 +67,12 @@ $review = mysqli_query($conn,
         <div class="collapse navbar-collapse" id="menu">
 
             <ul class="navbar-nav ms-auto">
+            
+                <li class="nav-item">
+                      <a class="nav-link" href="cek_pesanan.php">
+                            Tracking
+                      </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">
@@ -291,18 +132,32 @@ $review = mysqli_query($conn,
 
 <section class="hero-products">
 
-    <div class="container">
+    <div class="container hero-content">
 
-        <h1 class="fw-bold">
-            Produk Kopi Pilihan
+        <span class="hero-tag">
+            Premium Coffee Collection
+        </span>
+
+        <h1 class="hero-title mt-4">
+            Temukan Kopi
+            <br>
+            Favorit Anda
         </h1>
 
-        <p class="mt-3">
+        <p class="hero-text mt-3 mx-auto">
 
-            Biji kopi dan bubuk kopi dengan aroma khas
-            dan kualitas yang terjaga.
+            Nikmati berbagai pilihan kopi premium
+            dengan cita rasa khas Nusantara,
+            diproses dari biji kopi terbaik.
 
         </p>
+
+        <a href="#produk" class="btn btn-coffee mt-4">
+
+            Jelajahi Produk
+
+        </a>
+        
 
     </div>
 
@@ -328,7 +183,8 @@ $review = mysqli_query($conn,
                         type="text"
                         name="search"
                         class="form-control search-input"
-                        placeholder="Cari produk kopi...">
+                        placeholder="Cari produk kopi..."
+                        value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
 
                     </form>
 
@@ -372,23 +228,49 @@ $review = mysqli_query($conn,
 
                         </p>
 
-                        <p class="text-success">
-                            Stok :
-                            <?php echo $d['stok']; ?>
-                        </p>
+                       <?php if($d['stok'] > 0){ ?>
 
-                        <h4 class="fw-bold mt-4 price">
+                        <span class="badge bg-success">
+                            Stok <?php echo $d['stok']; ?>
+                        </span>
+
+                        <?php } else { ?>
+
+                        <span class="badge bg-danger">
+                            Habis
+                        </span>
+
+                        <?php } ?>
+
+                        <h4 class="product-price mt-4">
 
                             Rp <?php echo number_format($d['harga']); ?>
 
                         </h4>
 
                         <button
+                        <?php if($d['stok'] > 0){ ?>
+
+                        <button
                         class="btn btn-coffee mt-3"
                         data-bs-toggle="modal"
                         data-bs-target="#modal<?php echo $d['id']; ?>">
 
-                            Lihat Detail
+                        Lihat Detail
+
+                        </button>
+
+                        <?php } else { ?>
+
+                        <button
+                        class="btn btn-secondary mt-3"
+                        disabled>
+
+                        Stok Habis
+
+                        </button>
+
+                        <?php } ?>
 
                         </button>
 
@@ -860,6 +742,29 @@ $review = mysqli_query($conn,
 
 </section>
 
+<section class="cta">
+
+<div class="container">
+
+<h2>
+Ready To Enjoy Premium Coffee?
+</h2>
+
+<p class="mt-3 mb-4">
+Nikmati kopi pilihan terbaik dengan aroma khas dan kualitas premium untuk kebutuhan rumah, cafe maupun bisnis Anda.
+</p>
+
+<a href="#"
+class="btn btn-coffee">
+
+Order Sekarang
+
+</a>
+
+</div>
+
+</section>
+
 <!-- FOOTER -->
 
 <div class="footer">
@@ -895,6 +800,13 @@ function showPayment(select, id){
 }
 
 </script>
+<a
+href="https://wa.me/6282333044461"
+class="whatsapp"
+target="_blank">
 
+💬
+
+</a>
 </body>
 </html>
