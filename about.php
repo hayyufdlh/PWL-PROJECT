@@ -1,4 +1,4 @@
-```php id="uwt6pz"
+
 <?php
 session_start();
 ?>
@@ -437,4 +437,4 @@ session_start();
 
 </body>
 </html>
-```
+

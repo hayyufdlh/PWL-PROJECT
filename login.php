@@ -61,16 +61,7 @@ if(isset($_POST['login'])){
 
 </head>
 <body class="login-page">
-
-<div class="login-wrapper">
-
-    <div class="login-box">
-
-        ...
-
-    </div>
-
-</div>
+<div class="container">
 
 </body>
 
