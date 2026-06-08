@@ -28,6 +28,16 @@ $totalReview = mysqli_num_rows(
     mysqli_query($conn,"SELECT * FROM reviews")
 );
 
+$stokHabis = mysqli_num_rows(
+
+mysqli_query(
+$conn,
+"SELECT * FROM produk
+WHERE stok <= 0"
+)
+
+);
+
 /* PESANAN TERBARU */
 
 $pesanan = mysqli_query(
@@ -170,6 +180,22 @@ body{
                 </h1>
 
             </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+        <div class="card-dashboard bg-danger">
+
+        <h5>Stok Habis</h5>
+
+        <h1>
+
+        <?php echo $stokHabis; ?>
+
+        </h1>
+
+        </div>
 
         </div>
 

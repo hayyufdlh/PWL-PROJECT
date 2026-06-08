@@ -88,6 +88,15 @@ $d = mysqli_fetch_array($data);
         </div>
 
         <div class="mb-3">
+        <label>Stok</label>
+        <input
+        type="number"
+        name="stok"
+        class="form-control"
+        value="<?php echo $d['stok']; ?>">
+        </div>
+
+        <div class="mb-3">
 
             <label>Kategori</label>
 

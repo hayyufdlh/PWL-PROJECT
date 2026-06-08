@@ -248,7 +248,6 @@ $review = mysqli_query($conn,
 
                         </h4>
 
-                        <button
                         <?php if($d['stok'] > 0){ ?>
 
                         <button
@@ -499,12 +498,12 @@ $review = mysqli_query($conn,
                                     </h6>
 
                                     <div class="va-number">
-                                        8810 2026 1234
+                                        1884916280
                                     </div>
 
                                     <p class="mt-2 mb-0">
 
-                                        Bank BCA a/n Coffee Company
+                                        Bank BNI a/n Mahabayubadra Ardayanta
 
                                     </p>
 

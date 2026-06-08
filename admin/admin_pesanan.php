@@ -120,7 +120,41 @@ img{
 
             <td>
 
-                <?php echo $d['status_pesanan']; ?>
+            <?php
+
+            $status = $d['status_pesanan'];
+
+            if($status == "Menunggu Pembayaran"){
+
+            echo "<span class='badge bg-warning text-dark'>$status</span>";
+
+            }
+
+            elseif($status == "Menunggu Verifikasi"){
+
+            echo "<span class='badge bg-info'>$status</span>";
+
+            }
+
+            elseif($status == "Diproses"){
+
+            echo "<span class='badge bg-primary'>$status</span>";
+
+            }
+
+            elseif($status == "Dikirim"){
+
+            echo "<span class='badge bg-secondary'>$status</span>";
+
+            }
+
+            else{
+
+            echo "<span class='badge bg-success'>$status</span>";
+
+            }
+
+            ?>
 
             </td>
 

@@ -1,45 +1,55 @@
 <?php
 
-session_start();
-
 include 'config/koneksi.php';
 
-if(isset($_POST['login'])){
+if(isset($_POST['register'])){
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = mysqli_query(
+    $cek = mysqli_query(
         $conn,
         "SELECT * FROM users
-        WHERE username='$username'
-        AND password='$password'"
+        WHERE username='$username'"
     );
 
-    $cek = mysqli_num_rows($query);
+    if(mysqli_num_rows($cek) > 0){
 
-    if($cek > 0){
-
-        $data = mysqli_fetch_array($query);
-
-        $_SESSION['username'] = $data['username'];
-        $_SESSION['role'] = $data['role'];
-
-        if($data['role'] == 'admin'){
-
-            header("location:admin/dashboard.php");
-            exit;
-
-        }else{
-
-            header("location:index.php");
-            exit;
-
-        }
+        $error = "Username sudah digunakan";
 
     }else{
 
-        $error = "Username atau Password salah";
+        mysqli_query(
+
+            $conn,
+
+            "INSERT INTO users
+            (
+            username,
+            password,
+            role
+            )
+
+            VALUES
+            (
+            '$username',
+            '$password',
+            'customer'
+            )"
+
+        );
+
+        echo "
+
+        <script>
+
+        alert('Register berhasil');
+
+        window.location='login.php';
+
+        </script>
+
+        ";
 
     }
 
@@ -51,17 +61,17 @@ if(isset($_POST['login'])){
 <html lang="en">
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-    content="width=device-width,
-    initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
 
-    <title>Login</title>
+<title>Register</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
@@ -69,13 +79,12 @@ if(isset($_POST['login'])){
 
 <div class="login-box">
 
-
     <div class="login-title">
-        Login
+        Register
     </div>
 
     <div class="login-subtitle">
-        Selamat datang kembali
+        Buat akun Coffee Company
     </div>
 
     <?php if(isset($error)){ ?>
@@ -124,24 +133,24 @@ if(isset($_POST['login'])){
 
         <button
         type="submit"
-        name="login"
+        name="register"
         class="btn-login">
 
-            Login
+            Register
 
         </button>
 
         <div class="login-divider">
 
-            Belum punya akun?
+            Sudah punya akun?
 
         </div>
 
         <a
-        href="register.php"
+        href="login.php"
         class="btn-home">
 
-            Register Account
+            Login Sekarang
 
         </a>
 
@@ -149,7 +158,7 @@ if(isset($_POST['login'])){
         href="index.php"
         class="btn-home">
 
-            ← Back to Home
+            ← Kembali ke Home
 
         </a>
 

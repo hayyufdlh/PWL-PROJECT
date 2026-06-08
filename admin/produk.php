@@ -137,6 +137,7 @@ $data = mysqli_query($conn, "SELECT * FROM produk");
             <th>Product</th>
             <th>Category</th>
             <th>Price</th>
+            <th>Stok</th>
             <th>Action</th>
 
         </tr>
@@ -173,6 +174,10 @@ $data = mysqli_query($conn, "SELECT * FROM produk");
 
                 Rp <?php echo number_format($d['harga']); ?>
 
+            </td>
+
+            <td>
+                <?php echo $d['stok']; ?>
             </td>
 
             <td>

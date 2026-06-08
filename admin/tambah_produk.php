@@ -41,41 +41,13 @@
 
         <div class="mb-3">
 
-            <label>Harga</label>
+            <label>Harga per 100 Gram</label>
 
             <input type="number" name="harga" class="form-control">
 
         </div>
 
         <div class="mb-3">
-
-        <div class="mb-3">
-            <label>Harga 100 Gram</label>
-            <input type="number"
-            name="harga_100"
-            class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label>Harga 200 Gram</label>
-            <input type="number"
-            name="harga_200"
-            class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label>Harga 500 Gram</label>
-            <input type="number"
-            name="harga_500"
-            class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label>Harga 1000 Gram</label>
-            <input type="number"
-            name="harga_1000"
-            class="form-control">
-        </div>
             <label>Kategori</label>
 
             <input type="text" name="kategori" class="form-control">

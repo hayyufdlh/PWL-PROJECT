@@ -16,8 +16,7 @@
 
 
 -- Dumping database structure for coffee_db
-CREATE DATABASE IF NOT EXISTS `coffee_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `coffee_db`;
+
 
 -- Dumping structure for table coffee_db.messages
 CREATE TABLE IF NOT EXISTS `messages` (
