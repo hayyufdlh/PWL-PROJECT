@@ -23,39 +23,25 @@ $payment = $_POST['payment'];
 
 $status = "Menunggu Pembayaran";
 
-/* AMBIL HARGA BERDASARKAN BERAT */
+/* AMBIL DATA PRODUK */
 
-$produkData = mysqli_fetch_array(
-
-mysqli_query(
-$conn,
-"SELECT * FROM produk
-WHERE nama_produk='$produk'"
-
-)
-
+$query = mysqli_query(
+    $conn,
+    "SELECT * FROM produk WHERE nama_produk='$produk'"
 );
 
-if($berat == 100){
+$produkData = mysqli_fetch_assoc($query);
 
-    $harga = $produkData['harga_100'];
-
+if (!$produkData) {
+    die("Produk tidak ditemukan!");
 }
-elseif($berat == 200){
 
-    $harga = $produkData['harga_200'];
+/* HITUNG HARGA */
 
-}
-elseif($berat == 500){
+// harga di database dianggap harga per 100 gram
+$hargaDasar = $produkData['harga'];
 
-    $harga = $produkData['harga_500'];
-
-}
-else{
-
-    $harga = $produkData['harga_1000'];
-
-}
+$harga = ($berat / 100) * $hargaDasar;
 
 $total = $harga * $qty;
 
@@ -136,11 +122,11 @@ try{
         </p>
 
         <h2>
-        881020261234
+        1884916280
         </h2>
 
         <p>
-        Bank BCA a/n Coffee Company
+        Bank BNI a/n Mahabayubadra Ardayanta
         </p>
 
         ";
