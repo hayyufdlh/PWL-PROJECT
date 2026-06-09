@@ -52,7 +52,7 @@ $review = mysqli_query($conn,
 
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.php">
-    ☕ Coffee Company
+     Coffee Company
         </a>
 
 
@@ -300,19 +300,19 @@ $review = mysqli_query($conn,
 
                             </span>
 
-                            <h2 class="fw-bold">
+                            <h2 class="fw-bold text-dark mb-3">
 
                                 <?php echo $d['nama_produk']; ?>
 
                             </h2>
 
-                            <p class="mt-3">
+                            <p class="mt-3 text-dark">
 
                                 <?php echo $d['deskripsi']; ?>
 
                             </p>
 
-                            <h4 class="fw-bold mt-4 price">
+                            <h4 class="fw-bold text-dark mt-4">
 
                                 Rp <?php echo number_format($d['harga']); ?>
 
@@ -344,7 +344,7 @@ $review = mysqli_query($conn,
 
                     <div class="modal-content p-4">
 
-                        <h3 class="fw-bold mb-4">
+                        <h3 class="text-dark fw-bold">
 
                             Checkout Produk
 
@@ -367,7 +367,7 @@ $review = mysqli_query($conn,
 
                             <div class="mb-3">
 
-                                <label>
+                                <label class="text-dark">
                                     Nama
                                 </label>
 
@@ -381,7 +381,7 @@ $review = mysqli_query($conn,
 
                             <div class="mb-3">
 
-                                <label>
+                                <label class="text-dark">
                                     Email
                                 </label>
 
@@ -395,7 +395,7 @@ $review = mysqli_query($conn,
 
                             <div class="mb-3">
 
-                                <label>
+                                <label class="text-dark">
                                     Alamat
                                 </label>
 
@@ -408,7 +408,7 @@ $review = mysqli_query($conn,
                             </div>
                             <div class="mb-3">
 
-                            <label>
+                            <label class="text-dark">
                             Berat
                             </label>
 
@@ -439,7 +439,7 @@ $review = mysqli_query($conn,
 
                             <div class="mb-3">
 
-                            <label>
+                            <label class="text-dark">
                             Jumlah
                             </label>
 
@@ -455,9 +455,9 @@ $review = mysqli_query($conn,
 
                             <div class="mb-3">
 
-                                <label>
-                                    Metode Pembayaran
-                                </label>
+                            <label class="text-dark">
+                                Metode Pembayaran
+                            </label>
 
                                 <select
                                 name="payment"
@@ -491,17 +491,23 @@ $review = mysqli_query($conn,
                             id="paymentInfo<?php echo $d['id']; ?>"
                             style="display:none;">
 
-                                <div class="payment-box">
+                               <div class="payment-box"
+                                    style="background:#f8f5f0;padding:15px;border-radius:15px;color:#333;">
 
-                                    <h6 class="fw-bold">
+                                    <h6 class="fw-bold"
+                                        style="color:#6F4E37 !important;">
                                         Virtual Account
                                     </h6>
 
-                                    <div class="va-number">
+                                    <div class="va-number"
+                                        style="color:#A97142 !important;
+                                                font-size:28px;
+                                                font-weight:800;">
                                         1884916280
                                     </div>
 
-                                    <p class="mt-2 mb-0">
+                                    <p class="mt-2 mb-0"
+                                    style="color:#555 !important;">
 
                                         Bank BNI a/n Mahabayubadra Ardayanta
 
@@ -545,11 +551,11 @@ $review = mysqli_query($conn,
 
                 <div class="info-box shadow-sm">
 
-                    <h4 class="fw-bold mb-3">
+                    <h4 class="fw-bold mb-3 text-dark">
                         Biji Kopi Pilihan
                     </h4>
 
-                    <p>
+                    <p class="text-dark">
 
                         Menggunakan biji kopi pilihan dengan
                         aroma yang khas dan kualitas yang terjaga.
@@ -564,11 +570,11 @@ $review = mysqli_query($conn,
 
                 <div class="info-box shadow-sm">
 
-                    <h4 class="fw-bold mb-3">
+                    <h4 class="fw-bold mb-3 text-dark">
                         Fresh Roasted
                     </h4>
 
-                    <p>
+                    <p class="text-dark">
 
                         Proses roasting dilakukan dengan
                         menjaga cita rasa dan aroma kopi.
@@ -583,11 +589,11 @@ $review = mysqli_query($conn,
 
                 <div class="info-box shadow-sm">
 
-                    <h4 class="fw-bold mb-3">
+                    <h4 class="fw-bold mb-3 text-dark">
                         Kualitas Terjaga
                     </h4>
 
-                    <p>
+                    <p class="mb-0 text-dark">
 
                         Produk kopi dikemas dengan baik
                         agar kualitas tetap terjaga.
@@ -612,11 +618,11 @@ $review = mysqli_query($conn,
 
         <div class="text-center mb-5">
 
-            <h2 class="fw-bold">
+            <h2 class="fw-bold text-dark">
                 Ulasan Pelanggan
             </h2>
 
-            <p>
+            <p class="text-dark" >
                 Beberapa ulasan dari pelanggan kami.
             </p>
 

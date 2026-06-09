@@ -10,7 +10,7 @@ $nama_produk = $_POST['nama_produk'];
 $deskripsi = $_POST['deskripsi'];
 $harga = $_POST['harga'];
 $kategori = $_POST['kategori'];
-
+$stok = $_POST['stok'];
 /* CEK ADA GAMBAR BARU ATAU TIDAK */
 
 if($_FILES['gambar']['name'] != ''){
@@ -33,6 +33,7 @@ if($_FILES['gambar']['name'] != ''){
         deskripsi='$deskripsi',
         harga='$harga',
         kategori='$kategori',
+        stok='$stok',
         gambar='$gambar'
 
         WHERE id='$id'"
@@ -48,7 +49,8 @@ if($_FILES['gambar']['name'] != ''){
         nama_produk='$nama_produk',
         deskripsi='$deskripsi',
         harga='$harga',
-        kategori='$kategori'
+        kategori='$kategori',    
+        stok='$stok'
 
         WHERE id='$id'"
     );

@@ -13,7 +13,7 @@ ROOT
 --coffee-light:#C08B5C;
 --cream:#F8F4EE;
 --white:#ffffff;
---text:#333333;
+--text:#F5F1EA;
 --shadow:0 15px 35px rgba(0,0,0,.08);
 }
 
@@ -156,60 +156,27 @@ NAVBAR
 ========================= */
 
 .navbar{
-    background:rgba(0,0,0,.55);
+    background:#1a1a1a !important;
     backdrop-filter:blur(15px);
-    transition:.4s;
 }
 
 .navbar-brand{
-font-size:28px;
-font-weight:700;
-color:var(--coffee) !important;
-letter-spacing:.5px;
+    color:#C08B5C !important;
+    font-weight:700;
 }
 
 .nav-link{
-color:var(--text) !important;
-font-weight:500;
-margin-left:20px;
-position:relative;
-transition:.3s;
-}
-
-.nav-link::after{
-content:"";
-position:absolute;
-width:0;
-height:2px;
-left:0;
-bottom:-5px;
-background:var(--coffee-light);
-transition:.3s;
-}
-
-.nav-link:hover::after{
-width:100%;
+    color:#772323 !important;
+    font-weight:600;
+    opacity:1 !important;
 }
 
 .nav-link:hover{
-color:var(--coffee-light) !important;
+    color:#C08B5C !important;
 }
 
 .nav-link.active{
-color:var(--coffee) !important;
-font-weight:700;
-}
-
-.nav-link.active::after{
-width:100%;
-}
-
-.navbar-toggler{
-border:none;
-}
-
-.navbar-toggler:focus{
-box-shadow:none;
+    color:#C08B5C !important;
 }
 
 /* =========================
@@ -555,12 +522,24 @@ MODAL
     border-radius:15px;
     padding:15px;
     margin-top:15px;
+    color:#333;
+}
+
+.payment-box h6{
+    color:#6F4E37 !important;
+    font-weight:700;
+}
+
+.payment-box p{
+    color:#555 !important;
+    margin:0;
 }
 
 .va-number{
-    font-size:22px;
-    font-weight:700;
-    color:var(--coffee);
+    font-size:28px;
+    font-weight:800;
+    color:#A97142 !important;
+    letter-spacing:1px;
 }
 /* =========================
 REVIEW
@@ -725,4 +704,55 @@ RESPONSIVE
         font-size:32px;
     }
 
+}
+
+.form-header h3{
+    font-size: 28px;
+    font-weight: 700;
+    color: #6F4E37;
+    margin-bottom: 10px;
+}
+
+.form-header p{
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+label{
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.modal-content{
+    background:#ffffff !important;
+    color:#333333 !important;
+}
+
+.modal-content h3,
+.modal-content h6,
+.modal-content p,
+.modal-content label{
+    color:#333333 !important;
+}
+
+.modal-content .form-control,
+.modal-content .form-select{
+    color:#333333 !important;
+}
+
+.payment-box{
+    background:#f8f5f0 !important;
+    color:#333333 !important;
+}
+
+.payment-box *{
+    color:#333333 !important;
+}
+
+.va-number{
+    color:#6F4E37 !important;
+    font-size:28px;
+    font-weight:800;
 }

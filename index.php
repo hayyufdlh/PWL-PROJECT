@@ -27,7 +27,7 @@ session_start();
 <div class="container">
 
 <a class="navbar-brand" href="#">
-☕ Coffee Company
+    Coffee Company
 </a>
 
 <button class="navbar-toggler"
